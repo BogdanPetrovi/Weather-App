@@ -14,17 +14,17 @@ app.get("/", (req, res) => {
 app.post("/submit",  async (req,res) => {
   const city = req.body.city;
   try {
+    // transfering city name to longitude and latitude
     const result = await axios.get(`https://api.api-ninjas.com/v1/geocoding?city=${city}`, { headers:{'X-Api-Key': 'goP6VOYB2WDJMWwAvYebBQ==CLXeNXvjQTr6iNlz'} } );
-    // console.log(result.data[0]);
     const longitude = result.data[0].longitude;
     const latitude = result.data[0].latitude;
+    // transfering longitude and latitude to data i wanna display (temperature, wind speed, is day or night, apperent temperature)
     const result1 = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,is_day,wind_speed_10m&timezone=Europe%2FBerlin&forecast_days=1`);
     const data = result1.data.current;
-    // console.log(data);
-    res.render("index.ejs", { content: JSON.stringify(data) })
+    res.render("index.ejs", { content: data, city: city })
 
   } catch (error) {
-    res.status(404).send("Cant find your location");
+    res.status(404).render("index.ejs", {error: "1"});
   }
 });
 

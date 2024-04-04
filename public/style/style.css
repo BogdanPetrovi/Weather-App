@@ -5,6 +5,139 @@ body {
     background-size: 100% 100%;
     display: flex;
     flex-direction: column;
-    justify-content:space-around;
+    height: 100vh;
+    overflow: hidden;
+    justify-content:center;
     align-items: center;
+    font-family: "Fraunces", serif;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
+
+/* searchbar */
+form {
+    display: flex;
+    background-color: aliceblue;
+    height: 70px;
+    width: 500px;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: space-around;
+    transition: 0.4s ease-in-out;
+}
+
+form:hover {
+    background-color: rgb(211, 216, 221);
+}
+
+#city {
+    height: 100%;
+    background-color: transparent;
+    width: 80%;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    font-family: "Fraunces", serif;
+}
+
+#btn {
+    height:40px;
+}
+
+/* Result */
+
+h1 {
+    font-size: 86px;
+    color:aliceblue;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.result {
+    height: 600px;
+    width: 1000px;
+    background-image: url("/images/sky.jpg");
+    opacity: 0.9;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%; 
+    border-radius: 50px;
+    margin-top: 40px;
+    padding: 10px;
+    overflow: hidden;
+    color: #5E92FF;
+}
+
+#dayy {
+    background-image: url("/images/day.jpg");
+    background-repeat: no-repeat;
+    color: #006400;
+}
+
+#day{
+    height: 150px;
+    width: 150px;
+    position: relative;
+    left: 250px;
+    top: 60px;
+}
+
+#city1 {
+    width: max-content;
+    margin: 0 auto;
+    font-size: 40px;
+}
+
+#temperature {
+    margin: 0;  
+    font-size: 100px;
+    position: relative;
+    left: 450px;
+    bottom: 85px;
+    width: max-content;
+}
+
+#wind {
+    width: 200px;
+    height: 113px;
+    margin-left: 50px;
+}
+
+#windspeed {
+    font-size: 42px;
+    position: relative;
+    left:300px;
+    bottom:140px;
+}
+
+#windspeedt {
+    font-size: 28px;
+    position: relative;
+    left:80px;
+    bottom: 140px;
+}
+
+#man {
+    height: 175px;
+    width: 123px;
+    position: relative;
+    left:585px;
+    bottom:380px;
+}
+
+#apptemp {
+    font-size: 42px;
+    position: relative;
+    left: 725px;
+    bottom: 555px;
+}
+
+#apptempt {
+    font-size: 28px;
+    position: relative;
+    left:600px;
+    bottom:555px;
 }

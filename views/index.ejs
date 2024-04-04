@@ -5,17 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weatheer app</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,100..900,0..100;1,9..144,100..900,0..100&display=swap" rel="stylesheet">
 </head>
 <body>
     <form action="/submit" method="post">
-        <input type="text" placeholder="Search city" name="city">
-        <input type="submit" value="Search">
+        <input type="text" placeholder="Search city" name="city" autocomplete="off" id="city">
+        <input type="image" src="images/search.webp" id="btn">
     </form>
-    <% if(locals.content){ %>
-        <div class="result">
-            <h2> da</h2>
-            <p> </p>
-        </div>
+    <% if(locals.content){ 
+        // getting all variables on rounded numbers so it's easier to print them
+        const temperature = Math.round(content.temperature_2m);
+        const windSpeed = Math.round(content.wind_speed_10m);   
+        const appTemperature = Math.round(content.apparent_temperature);
+        if (locals.city) { %>
+            <div class="result" <% if(content.is_day == 1){ %> id="dayy" <% } %>>
+                <h2 id="city1"> <%= city %></h2>
+                <img <% if(content.is_day == 1){ %>
+                    src="images/sun.webp" alt="sun"
+                <% } else { %>  
+                    src="images/moon.png" alt="moon"
+                <% } %> id="day" >
+                <h2 id="temperature"> <%= temperature %>°C</h2>
+                <img src="images/wind<% if(content.is_day == 1){ %>night.png" <% }  else { %>.png" <% }%> alt="wind" id="wind">
+                <h4 id="windspeed"><%= windSpeed %>km/h</h4>
+                <h4 id="windspeedt">Wind speed</h4>
+
+                <img src="images/man<% if(content.is_day == 0){ %>night.png" <% }  else { %>.png" <% }%> alt="man walking with phone" id="man">
+                <h4 id="apptemp"><%= appTemperature %>°C</h4>
+                <h4 id="apptempt">Apperent temperature</h4>
+            </div>
+        <% } else { %>
+            <h1>Please enter your city above!</h1>
+    <% } } 
+    if(locals.error){ %>
+        <h1>404 error</h1>
+        <h2 style="color:white">Cant find your city, please try again!</h2>
     <% } %>
     
 </body>
